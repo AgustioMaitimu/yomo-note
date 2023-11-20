@@ -1,4 +1,6 @@
 import React from "react";
+import lightTrash from '../public/trashcan-lightmode.png'
+import darkTrash from '../public/trashcan-darkmode.png'
 import './Card.css'
 
 export default function Card(props) {
@@ -28,7 +30,8 @@ export default function Card(props) {
                     className="card--subject"
                     style={{color: props.lightMode ? 'rgb(23, 23, 23)' : 'white'}}
                 >{props.subject}</h3>
-                {props.editMode && <img className="card--trashcan" src={props.lightMode ? '../public/trashcan-lightmode.png' : '../public/trashcan-darkmode.png'} onClick={deleteHandler}/>}
+                {props.editMode && props.lightMode && <img className="card--trashcan" src={lightTrash} onClick={deleteHandler} />}
+                {props.editMode && !props.lightMode && <img className="card--trashcan" src={darkTrash} onClick={deleteHandler} />}
             </div>
             <p 
                 className="card--date"
