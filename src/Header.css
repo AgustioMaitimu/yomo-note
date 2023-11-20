@@ -1,0 +1,66 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem 0;
+    top:0;
+    position:fixed;
+    z-index:150;
+}
+
+.header--top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+.header--buttons {
+    display: flex;
+    align-items: center;
+}
+
+.app--name {
+    margin: 0;
+    width: 3rem;
+}
+
+.lightmode--toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 3.2rem;
+    height: 1.8rem;
+    border-radius: 20px;
+}
+
+.lightmode--on, .darkmode--on {
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 20px;
+}
+
+.lightmode--on {
+    margin-right: 40%;
+    background-color: white;
+}
+
+.darkmode--on {
+    margin-left: 40%;
+    background-color: rgb(23, 23, 23);
+}
+
+.edit--button {
+    width: 4.5rem;
+    height: 2.2rem;
+    border-radius: 16px;
+    margin-left: 2rem;
+    border: 0px;
+}
+
+.header--border {
+    align-self: center;
+    border-radius: 20px;
+    margin-top: 1rem;
+    width: 98.5vw;
+    height: 0.3rem;
+}
