@@ -20,6 +20,15 @@ export default function Card(props) {
         }
     }
 
+    function formatBodyText(body) {
+        return body.split('\n').map((line, index) => (
+          <React.Fragment key={index}>
+            {line}
+            <br />
+          </React.Fragment>
+        ));
+      }
+
     return(
         <div 
             className="card" onClick={toggleOpened} 
@@ -30,14 +39,14 @@ export default function Card(props) {
                     className="card--subject"
                     style={{color: props.lightMode ? 'rgb(23, 23, 23)' : 'white'}}
                 >{props.subject}</h3>
-                {props.editMode && props.lightMode && <img className="card--trashcan" src={lightTrash} onClick={deleteHandler} />}
-                {props.editMode && !props.lightMode && <img className="card--trashcan" src={darkTrash} onClick={deleteHandler} />}
+                {props.editMode && props.lightMode && <img className="card--trashcan" src={lightTrash} alt='Delete' onClick={deleteHandler} />}
+                {props.editMode && !props.lightMode && <img className="card--trashcan" src={darkTrash} alt='Delete'onClick={deleteHandler} />}
             </div>
-            <p 
+            {!opened && <p 
                 className="card--date"
                 style={{color: props.lightMode ? 'rgb(23, 23, 23)' : 'white'}}
-            >{props.date}</p>
-            {opened && <p className="card--note" style={{color: props.lightMode ? 'rgb(23, 23, 23)' : 'white'}}>{props.body}</p>}
+            >{props.date}</p>}
+            {opened && <p className="card--note" style={{color: props.lightMode ? 'rgb(23, 23, 23)' : 'white'}} >{formatBodyText(props.body)}</p>}
         </div>
     )
 }
