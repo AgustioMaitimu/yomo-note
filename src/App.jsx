@@ -32,8 +32,26 @@ export default function App() {
 
   function addNote() {
     const storedNotes = JSON.parse(localStorage.getItem('yomo-notes')) || [];
+
+    const hasDefaultNote = localStorage.getItem('has-default-note') === 'true';
+
+    if (!hasDefaultNote) {
+      const defaultNote = {
+        subject: 'Welcome to Your Notes App',
+        body: 'This is your first note. Feel free to edit or delete it.\n\n(Tio was here.)',
+        date: new Date().toLocaleDateString(),
+        key: 100000000002
+      };
+
+      storedNotes.push(defaultNote);
+
+      localStorage.setItem('yomo-notes', JSON.stringify(storedNotes));
+
+      localStorage.setItem('has-default-note', 'true');
+    }
+
     setNotes(storedNotes);
-  
+
     const updatedCards = storedNotes.map(note => (
       <Card
         addNote={addNote}
@@ -46,9 +64,10 @@ export default function App() {
         identifier={note.key}
       />
     ));
-  
+
     setCards(updatedCards);
   }
+
 
   React.useEffect(() => {
     addNote()
